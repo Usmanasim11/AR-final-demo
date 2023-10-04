@@ -7,7 +7,7 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(b"Hello, Rehman!!!")
+        self.wfile.write(b"Hello, Usman!!!")
 
 PORT = 3456
 with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
