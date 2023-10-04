@@ -6,4 +6,4 @@ FROM adoptopenjdk:11-jre-hotspot-bionic
 WORKDIR /app
 COPY --from=build /app/target/spring-boot-jacoco.jar ./spring-boot-jacoco.jar
 EXPOSE 8081
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "spring-boot-jacoco.jar"]
