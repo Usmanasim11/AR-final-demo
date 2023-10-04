@@ -1,14 +1,9 @@
-#FROM openjdk:8-jdk-alpine
-FROM adoptopenjdk/openjdk11:latest
-# Set the working directory inside the container
+FROM maven:3.8.4-openjdk-11-slim AS build
 WORKDIR /app
-# Copy the Maven POM file and download dependencies
-COPY pom.xml .
-RUN mvn dependency:go-offline
-# Copy the application source code
-COPY src ./src
-# Build the Spring Boot application
-RUN mvn clean package
+COPY . .
+RUN mvn clean package -DskipTests
+FROM adoptopenjdk:11-jre-hotspot-bionic
+WORKDIR /app
+COPY --from=build /app/target/spring-boot-jacoco.jar ./spring-boot-jacoco.jar
 EXPOSE 8081
-ADD target/spring-boot-jacoco.jar spring-boot-jacoco.jar
-ENTRYPOINT ["java","-jar","/spring-boot-jacoco.jar"]
+CMD ["java", "-jar", "app.jar"]
