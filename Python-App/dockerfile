@@ -4,4 +4,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 3456
 ENV NAME HelloApp
-CMD ["python", "python/hello.py"]
+CMD ["python", "hello.py"]
