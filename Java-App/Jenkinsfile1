@@ -31,7 +31,7 @@ pipeline {
         stage('Build and Run') {
             steps {
               // sh 'mvn -version'
-                dir ('App') {
+                dir ('Java-App') {
                     sh 'mvn clean install'
                     sh 'mvn clean package'
                     //sh 'mvn spring-boot:run'
@@ -40,18 +40,19 @@ pipeline {
         }
         stage('Publishing Junit Tests report ') {
             steps {
-                junit 'App/target/surefire-reports/*.xml'
+                dir ('Java-App') {
+                    junit 'App/target/surefire-reports/*.xml' }
             }   
         }
         stage('Publishing Code Coverage') {
             steps {
-                dir ('App') {
+                dir ('Java-App') {
                     jacoco()}
             }   
         }  
         stage('Deploy') {
             steps {
-                dir ('App') {
+                dir ('Java-App') {
                     sh 'sudo sh ./jenkins/scripts/deliver.sh' }
             }
         }
