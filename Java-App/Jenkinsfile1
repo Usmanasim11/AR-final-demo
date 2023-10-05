@@ -38,12 +38,11 @@ pipeline {
                 }
             }
         }
-        // stage('Publishing Junit Tests report ') {
-        //     steps {
-        //         dir ('Java-App') {
-        //             junit 'App/target/surefire-reports/*.xml' }
-        //     }   
-        // }
+        stage('Publishing Junit Tests report ') {
+            steps {
+                junit 'Java-App/target/surefire-reports/*.xml' 
+            }   
+        }
         stage('Publishing Code Coverage') {
             steps {
                 dir ('Java-App') {
