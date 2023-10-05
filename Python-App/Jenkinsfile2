@@ -31,17 +31,6 @@ pipeline {
             }
         }
 
-/// *** Comment the below stage when run without docker ***
-        // stage('Build and Run') {
-        //     steps {
-        //         script {
-        //             // Build and run your Python application
-        //             dir ('Python-App') {
-        //                 sh "python hello.py" }
-        //         }
-        //     }
-        // }
-
 // *** UnComment below stage when using with Docker *** 
         stage('Deploy with Docker Compose') {
             steps {

@@ -32,32 +32,15 @@ pipeline {
         }
 
 /// *** Comment the below stage when run without docker ***
-        // stage('Build and Run') {
-        //     steps {
-        //         script {
-        //             // Build and run your Python application
-        //             dir ('Python-App') {
-        //                 sh "python hello.py" }
-        //         }
-        //     }
-        // }
-
-// *** UnComment below stage when using with Docker *** 
-        stage('Deploy with Docker Compose') {
+        stage('Build and Run') {
             steps {
                 script {
-                    // Bring down the previous deployment
-                    sh "sudo docker-compose -f Python-App/docker-compose.yml down -v"
-
-                    // Update the docker-compose.yml file with the new image tag
-                    def buildNumber = env.BUILD_NUMBER 
-
-                    sh "sed -i 's/image: python-app:.*/image: python-app:${buildNumber}/' Python-App/docker-compose.yml"
-                    // Bring up the latest deployment
-                    sh "sudo docker-compose -f Python-App/docker-compose.yml up -d"
+                    // Build and run your Python application
+                    dir ('Python-App') {
+                        sh "python hello.py" }
                 }
             }
         }
-        
     }
+
 }
