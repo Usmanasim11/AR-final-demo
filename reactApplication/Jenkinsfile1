@@ -65,9 +65,9 @@ pipeline {
         stage('Run') {
             steps {
                 dir('reactApplication') {
-                    sh 'sudo npm install -g pm2' // Install PM2 globally
-                    sh 'sudo npm install' // Install project dependencies
-                    sh 'sudo npm start src/index.js' // ** comment the line when using docker-compose **
+                    sh 'npm install -g pm2' // Install PM2 globally
+                    sh 'npm install' // Install project dependencies
+                    sh 'npm start src/index.js' // ** comment the line when using docker-compose **
                 }
             }
         }

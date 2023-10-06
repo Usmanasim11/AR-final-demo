@@ -52,7 +52,7 @@ pipeline {
         // stage('Deploy') {
         //     steps {
         //         dir ('Java-App') {
-        //             sh 'sudo sh ./jenkins/scripts/deliver.sh' }
+        //             sh 'sh ./jenkins/scripts/deliver.sh' }
         //     }
         // }
         
@@ -61,14 +61,14 @@ pipeline {
              steps {
                 script {
                     // Bring down the previous deployment
-                    sh "sudo docker-compose -f Java-App/docker-compose.yml down -v"
+                    sh "docker-compose -f Java-App/docker-compose.yml down -v"
 
                     // Update the docker-compose.yml file with the new image tag
                     def buildNumber = env.BUILD_NUMBER 
 
                     sh "sed -i 's/image: Java-App:.*/image: Java-App:${buildNumber}/' Java-App/docker-compose.yml"
                     // Bring up the latest deployment
-                    sh "sudo docker-compose -f Java-App/docker-compose.yml up -d"
+                    sh "docker-compose -f Java-App/docker-compose.yml up -d"
                 }
             }
         }

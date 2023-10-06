@@ -64,14 +64,14 @@ pipeline {
             steps {
                 script {
                     // Bring down the previous deployment
-                    sh "sudo docker-compose -f reactApplication/docker-compose.yml down -v"
+                    sh "docker-compose -f reactApplication/docker-compose.yml down -v"
 
                     // Update the docker-compose.yml file with the new image tag
                     def buildNumber = env.BUILD_NUMBER 
 
                     sh "sed -i 's/image: react-app:.*/image: react-app:${buildNumber}/' reactApplication/docker-compose.yml"
                     // Bring up the latest deployment
-                    sh "sudo docker-compose -f reactApplication/docker-compose.yml up -d"
+                    sh "docker-compose -f reactApplication/docker-compose.yml up -d"
                 }
             }
         } 

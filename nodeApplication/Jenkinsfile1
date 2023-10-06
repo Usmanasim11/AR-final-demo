@@ -50,9 +50,9 @@ pipeline {
         stage('Run') {
             steps {
                 dir('nodeApplication') {
-                    sh 'sudo npm install -g pm2' // Install PM2 globally
-                    sh 'sudo npm install' // Install project dependencies
-                    sh 'sudo npm start index.js' // Start the app on port 4000
+                    sh 'npm install -g pm2' // Install PM2 globally
+                    sh 'npm install' // Install project dependencies
+                    sh 'npm start index.js' // Start the app on port 4000
                 }
             }
         }

@@ -52,7 +52,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir ('Java-App') {
-                    sh 'sudo sh ./jenkins/scripts/deliver.sh' }
+                    sh 'sh ./jenkins/scripts/deliver.sh' }
             }
         }
             }

@@ -71,27 +71,16 @@ pipeline {
             steps {
                 script {
                     // Bring down the previous deployment
-                    sh "sudo docker-compose -f nodeApplication/docker-compose.yml down -v"
+                    sh "docker-compose -f nodeApplication/docker-compose.yml down -v"
 
                     // Update the docker-compose.yml file with the new image tag
                     def buildNumber = env.BUILD_NUMBER 
 
                     sh "sed -i 's/image: node-app:.*/image: node-app:${buildNumber}/' nodeApplication/docker-compose.yml"
                     // Bring up the latest deployment
-                    sh "sudo docker-compose -f nodeApplication/docker-compose.yml up -d"
+                    sh "docker-compose -f nodeApplication/docker-compose.yml up -d"
                 }
             }
         } 
-        
-// *** when you want to run without docker compose for the NODE APP Uncomment the below stage and run it ***        
-        // stage('Run') {
-        //     steps {
-        //         dir('nodeApplication') {
-        //             sh 'sudo npm install -g pm2' // Install PM2 globally
-        //             sh 'sudo npm install' // Install project dependencies
-        //             sh 'sudo npm start index.js' // Start the app on port 4000
-        //         }
-        //     }
-        // }
     }
 }
