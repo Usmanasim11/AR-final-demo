@@ -3,7 +3,7 @@ services:
   node-app:
     build: .
     ports:
-      - "4000:80"
+      - "4000:8080"
     image: node-app
     container_name: node-app
     #image: node-app:${BUILD_NUMBER}
