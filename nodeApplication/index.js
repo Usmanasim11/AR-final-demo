@@ -1,13 +1,17 @@
-var http = require('http');
-
-var server = http.createServer(function(request, response) {
-
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World From Usman Asim!");
-
+'use strict';
+ 
+const express = require('express');
+ 
+// Constants
+const PORT = 4000;
+const HOST = '0.0.0.0';
+ 
+// App
+const app = express();
+app.get('/', (req, res) => {
+  res.send('Hello World From Usman');
 });
-
-var port = 4000;
-server.listen(port);
-
-console.log("Server running at http://localhost:%d", port);
+ 
+app.listen(PORT, HOST, () => {
+  console.log(`Running on http://${HOST}:${PORT}`);
+});
