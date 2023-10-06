@@ -1,12 +1,13 @@
-#Repo URL: https://github.com/Usmanasim11/AR-final-demo.git
+# Repo 
+URL: https://github.com/Usmanasim11/AR-final-demo.git
 
-#Installing Git
+# Installing Git
 yum install git
 
-#Installing wget
+# Installing wget
 yum install wget
 
-#Installing Docker
+# Installing Docker
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo   https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -15,12 +16,12 @@ sudo systemctl restart docker
 sudo chmod 666 /var/run/docker.sock
 sudo systemctl restart docker
 
-#Installing Docker-Compose
+# Installing Docker-Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 
-#Installing Maven
+# Installing Maven
 sudo yum install maven
 wget https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz -P /tmp
 cd /tmp
@@ -37,16 +38,16 @@ PATH=${M2_HOME}/bin:${PATH}
 sudo chmod +x /etc/profile.d/maven.sh
 source /etc/profile.d/maven.sh
 
-#Installing Java
+#  Installing Java
 sudo yum install java-11-openjdk
 sudo update-alternatives --config java
 
-#Installing Jenkins
+# Installing Jenkins
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
 # Add required dependencies for the jenkins package
-sudo yum install fontconfig java-17-openjdk
 sudo yum install jenkins
 sudo systemctl daemon-reload
 
@@ -54,10 +55,10 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
-#Installing Python3
+# Installing Python3
 sudo yum install python3
 
-#Installing Node and NPM
+# Installing Node and NPM
 sudo yum install -y gcc-c++ make curl
 curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
 sudo yum remove -y nodejs npm
