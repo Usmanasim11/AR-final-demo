@@ -1,3 +1,6 @@
+This will print a simple hello world
+
+
 # simple-java-maven-app
 
 This repository is for the

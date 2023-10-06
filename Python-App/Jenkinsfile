@@ -37,7 +37,7 @@ pipeline {
         //         script {
         //             // Build and run your Python application
         //             dir ('Python-App') {
-        //                 sh "python hello.py" }
+        //                 sh "python3 hello.py" }
         //         }
         //     }
         // }
